@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912721404113663501, guid: 1543cea3834c1874d80862c12420f463, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.53
       objectReference: {fileID: 0}
     - target: {fileID: 1912721404113663501, guid: 1543cea3834c1874d80862c12420f463, type: 3}
       propertyPath: m_LocalPosition.y
@@ -637,6 +637,10 @@ PrefabInstance:
       propertyPath: center
       value: 
       objectReference: {fileID: 947128557}
+    - target: {fileID: 5331430719114061974, guid: 77c4e5b80ca79164f9bb862b87154eb3, type: 3}
+      propertyPath: rotationSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5331430719114061975, guid: 77c4e5b80ca79164f9bb862b87154eb3, type: 3}
       propertyPath: m_Name
       value: Circle

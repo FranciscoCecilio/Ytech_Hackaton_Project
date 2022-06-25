@@ -34,7 +34,7 @@ public class DrawCircle : MonoBehaviour
             float x = xScaled * radius;
             float y = yScaled * radius;
 
-            Vector3 currentPosition = new Vector3(x,y,0);
+            Vector3 currentPosition = transform.position + new Vector3(x,y,0);
 
             circleRenderer.SetPosition(currentStep, currentPosition);
         }

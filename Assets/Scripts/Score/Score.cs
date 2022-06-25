@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public static class Score
 {
@@ -15,8 +16,12 @@ public static class Score
     // chamado na scene do gameover
     public static void GameOver(){
         // calcular o score
-
+	_score = Math.Pow(1.2, _duration)
         // guardar o highscore nos playerprefs
+    }
+    
+    public static int GetScore(){
+    	return _score
     }
 
 

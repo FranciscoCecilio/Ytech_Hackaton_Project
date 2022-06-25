@@ -13,6 +13,8 @@ public class StartScene : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
+
         time = 1f;
         if (!PlayerPrefs.HasKey("highscore")){
             PlayerPrefs.SetFloat("highscore", 0);

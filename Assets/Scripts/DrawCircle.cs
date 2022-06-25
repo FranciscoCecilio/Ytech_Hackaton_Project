@@ -10,7 +10,6 @@ public class DrawCircle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        circleRenderer.sharedMaterial.SetColor("_Color", Color.green);
     }
 
     // Update is called once per frame
@@ -22,11 +21,10 @@ public class DrawCircle : MonoBehaviour
     // Draw circle on XZ plane
     private void Draw(int steps)
     {
-
         circleRenderer.positionCount = steps;
         for(int currentStep = 0; currentStep < steps; currentStep ++){
             float circumferenceProgress = (float)currentStep/steps;
-            float currentRadian = circumferenceProgress * 1 * Mathf.PI;
+            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
 
             float xScaled = Mathf.Cos(currentRadian);
             float yScaled = Mathf.Sin(currentRadian);
@@ -39,4 +37,5 @@ public class DrawCircle : MonoBehaviour
             circleRenderer.SetPosition(currentStep, currentPosition);
         }
     }
+    
 }

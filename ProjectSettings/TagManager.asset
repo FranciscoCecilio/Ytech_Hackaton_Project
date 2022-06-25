@@ -7,6 +7,10 @@ TagManager:
   - Portal
   - zone
   - Enemy
+  - Enemy-Cookie
+  - Enemy-Statue
+  - Enemy-Saber
+  - out_of_zone
   layers:
   - Default
   - TransparentFX

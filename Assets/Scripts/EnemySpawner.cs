@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public float changeTime = 10;
     private float spawnTimer = 0;
     private float changeSpeedTimer = 0;
-    private float offsetSpeed = 0.1f;
+    public float offsetSpeed = 0.5f;
     public GameObject[] selectorArr;
     public float height;
 

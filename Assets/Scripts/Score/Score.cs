@@ -18,6 +18,7 @@ public static class Score
         // calcular o score
 	    //_score = Math.Pow(1.2f, _duration);
         // guardar o highscore nos playerprefs
+
         if(_duration > GetBestScore()){
             PlayerPrefs.SetFloat("highscore", _duration);
         }

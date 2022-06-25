@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Portal
   - zone
+  - Enemy
   layers:
   - Default
   - TransparentFX

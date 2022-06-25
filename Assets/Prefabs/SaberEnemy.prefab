@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3230580026538011757}
   m_Layer: 0
   m_Name: SaberEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy-Saber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ca232118af04a1f98e5c61049c70fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  cookieSpeed: 5
+  saberSpeed: 3
+  statueSpeed: 2
 --- !u!50 &3230580026538011757
 Rigidbody2D:
   serializedVersion: 4

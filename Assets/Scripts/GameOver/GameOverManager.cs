@@ -12,6 +12,9 @@ public class GameOverManager : MonoBehaviour
     public TMP_Text highScoreText;
 
     public void ShowGameOverPanel(){
+        
+        Score.SetDuration(TimerScript.timeToDisplay);
+        Score.GameOver();
         // parar o temporizador
         timerscript.isGameOver = true;
         panel.SetActive(true);

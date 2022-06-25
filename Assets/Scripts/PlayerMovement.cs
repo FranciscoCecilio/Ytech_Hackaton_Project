@@ -25,4 +25,11 @@ public class PlayerMovement : MonoBehaviour
         var desiredPosition = (transform.position - center.position).normalized * radius + center.position;
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
     }
+
+     // called when the cube hits the floor
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D");
+    }
+
 }

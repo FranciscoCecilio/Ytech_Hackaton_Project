@@ -5,8 +5,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public float maxTime = 2;
-    private float timer = 0;
+    public float maxTime = 5;
+    public float changeTime = 10;
+    private float spawnTimer = 0;
+    private float changeSpeedTimer = 0;
+    private float offsetSpeed = 0.1f;
     public GameObject[] selectorArr;
     public float height;
 
@@ -22,15 +25,22 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer > maxTime) {
+        if (spawnTimer > maxTime) {
             int numObjects = selectorArr.Length;
             int selectedEnemy = Random.Range(0, numObjects );
             GameObject newEnemy = Instantiate(selectorArr[selectedEnemy]);
             newEnemy.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), -1);
             Destroy(newEnemy, 15);
-            timer = 0;
+            spawnTimer = 0;
+
         }
 
-        timer += Time.deltaTime;
+         if (changeSpeedTimer > changeTime && maxTime >= 1) {
+            maxTime -= offsetSpeed;
+            changeSpeedTimer = 0;
+         }
+
+        spawnTimer += Time.deltaTime;
+        changeSpeedTimer += Time.deltaTime;
     }
 }

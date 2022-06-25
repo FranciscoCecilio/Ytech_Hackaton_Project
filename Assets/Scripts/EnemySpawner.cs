@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
         }
 
-         if (changeSpeedTimer > changeTime && maxTime >= 1) {
+         if (changeSpeedTimer > changeTime && maxTime >= 0.5) {
             maxTime -= offsetSpeed;
             changeSpeedTimer = 0;
          }

@@ -26,7 +26,7 @@ public class DrawCircle : MonoBehaviour
         circleRenderer.positionCount = steps;
         for(int currentStep = 0; currentStep < steps; currentStep ++){
             float circumferenceProgress = (float)currentStep/steps;
-            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
+            float currentRadian = circumferenceProgress * 1 * Mathf.PI;
 
             float xScaled = Mathf.Cos(currentRadian);
             float yScaled = Mathf.Sin(currentRadian);
@@ -34,7 +34,7 @@ public class DrawCircle : MonoBehaviour
             float x = xScaled * radius;
             float y = yScaled * radius;
 
-            Vector3 currentPosition = new Vector3(x,y,0);
+            Vector3 currentPosition = transform.position + new Vector3(x,y,0);
 
             circleRenderer.SetPosition(currentStep, currentPosition);
         }

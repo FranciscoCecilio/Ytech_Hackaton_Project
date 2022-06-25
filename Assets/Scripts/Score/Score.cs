@@ -16,12 +16,16 @@ public static class Score
     // chamado na scene do gameover
     public static void GameOver(){
         // calcular o score
-	_score = Math.Pow(1.2f, _duration);
+	    _score = Math.Pow(1.2f, _duration);
         // guardar o highscore nos playerprefs
+        if(_duration > GetBestScore()){
+            PlayerPrefs.SetFloat("highscore", _duration);
+        }
     }
-    
-    public static double GetScore(){
-    	return _score;
+
+    public static int GetBestScore(){
+
+        return PlayerPrefs.GetInt("highscore");
     }
 
 

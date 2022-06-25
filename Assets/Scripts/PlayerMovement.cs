@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform center;
     Vector3 axis = Vector3.forward;
+
     public float radius = 2.0f;
     public float radiusSpeed = 0.5f;
     public float rotationSpeed = 80.0f; 
@@ -16,10 +17,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update() {
         Rotate();
-        /*if(Input.GetKeyDown(KeyCode.W)){
-            center.transform.position
-        }
-        if(*/
+        
     }
 
     void Rotate(){

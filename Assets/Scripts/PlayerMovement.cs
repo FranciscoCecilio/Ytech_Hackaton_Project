@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             radius = radius + 1;
         }
         if(other.tag == "Slow_Zone"){
-            GetComponent;
+            //GetComponent;
         }
         if(other.tag == "Fast_Zone"){
             rotationSpeed = rotationSpeed*2;

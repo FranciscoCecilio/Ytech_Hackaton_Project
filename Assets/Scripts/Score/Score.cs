@@ -6,7 +6,7 @@ using System;
 public static class Score
 {
     static float _duration; // em segundos
-    public static int _score; // em segundos
+    public static double _score; // em segundos
 
     // chamado na scene do jogo
     public static void SetDuration(float duration){
@@ -16,12 +16,12 @@ public static class Score
     // chamado na scene do gameover
     public static void GameOver(){
         // calcular o score
-	_score = Math.Pow(1.2, _duration)
+	_score = Math.Pow(1.2f, _duration);
         // guardar o highscore nos playerprefs
     }
     
-    public static int GetScore(){
-    	return _score
+    public static double GetScore(){
+    	return _score;
     }
 
 

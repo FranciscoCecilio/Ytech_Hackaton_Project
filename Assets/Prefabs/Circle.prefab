@@ -101,6 +101,7 @@ MonoBehaviour:
   radius: 2
   radiusSpeed: 0.5
   rotationSpeed: 80
+  gameOverMng: {fileID: 0}
 --- !u!58 &3466928617704788113
 CircleCollider2D:
   m_ObjectHideFlags: 0

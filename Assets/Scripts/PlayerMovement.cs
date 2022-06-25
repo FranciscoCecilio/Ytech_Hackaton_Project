@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float radius = 2.0f;
     public float radiusSpeed = 0.5f;
     public float rotationSpeed = 80.0f; 
+
+    public GameOverManager gameOverMng;
     
     void Start() {
         transform.position = (transform.position - center.position).normalized * radius + center.position;
@@ -26,10 +28,13 @@ public class PlayerMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
     }
 
-     // called when the cube hits the floor
+    // called when the cube hits the floor
     void OnCollisionEnter2D(Collision2D col)
     {
-       GameOverManager();
+        if(col.gameObject.tag.Equals("Enemy"))
+            gameOverMng.ShowGameOverPanel();
     }
+
+    
 
 }

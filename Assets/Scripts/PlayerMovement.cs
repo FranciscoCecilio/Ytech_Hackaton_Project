@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider other){
         if(other.tag == "Portal"){
-            radius = radius + 0.5f;
+            if(radius <= 4f) radius = radius + 0.5f;
         }
         if(other.tag == "Zone"){
             rotationSpeed = other.GetComponent<Zone>().getValue();

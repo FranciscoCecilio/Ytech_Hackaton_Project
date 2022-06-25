@@ -10,7 +10,7 @@ public class DrawCircle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        circleRenderer.sharedMaterial.SetColor("_Color", Color.green);
     }
 
     // Update is called once per frame

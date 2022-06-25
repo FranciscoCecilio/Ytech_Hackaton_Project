@@ -5,17 +5,6 @@ using System;
 
 public class Zone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public float getValue(){
         System.Random rd = new System.Random();
@@ -24,15 +13,12 @@ public class Zone : MonoBehaviour
         switch(rand){
             case 0:
                 return 0.5f;
-                break;
 
             case 1:
                 return 2.0f;
-                break;
 
             default:
                 return 1.0f;
-                break;
         }
     }
 }

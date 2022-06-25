@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 0.1f;
     public float pressed_timer_up = 0.2f;
     public float pressed_timer_down = 0.2f;
+
+    public GameOverManager gameOverMng;
     
     void Start() {
         transform.position = ((transform.position - center.position).normalized * radius + center.position);
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider other){
         if(other.tag == "Portal"){
-            radius = radius + 0.5;
+            radius = radius + 0.5f;
         }
         if(other.tag == "Zone"){
             rotationSpeed = other.GetComponent<Zone>().getValue();
@@ -58,10 +60,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider other){
+    void OnTriggerExit(Collider other){
         if(other.tag == "Zone"){
             rotationSpeed = rotationSpeed_initial;
         }
     }
+    // called when the cube hits the floor
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag.Equals("Enemy"))
+            gameOverMng.ShowGameOverPanel();
+    }
+
+    
+
 }
 

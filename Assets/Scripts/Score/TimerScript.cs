@@ -7,8 +7,10 @@ public class TimerScript : MonoBehaviour
 {
     public TMP_Text timerText;
     public TMP_Text bestTimeText;
-    public static float timeToDisplay;
 
+    public static float timeToDisplay;
+    public bool isGameOver = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +29,11 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeToDisplay += Time.deltaTime;
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("TIME: " + "{0:00}:{1:00}", minutes, seconds);
+        if(!isGameOver){
+            timeToDisplay += Time.deltaTime;
+            float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
+            float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+            timerText.text = string.Format("TIME: " + "{0:00}:{1:00}", minutes, seconds);
+        }
     }
 }

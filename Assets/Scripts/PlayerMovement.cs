@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         {
             pressed_timer_down = 0.2f;
         }
+    }
 
     void Rotate(){
         transform.RotateAround (center.position, axis, -rotationSpeed * Time.deltaTime);
@@ -50,29 +51,26 @@ public class PlayerMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
     }
 
-    void OnTriggerEnter2D(Collider other){
+    void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Portal"){
             if(radius <= 4f) radius = radius + 0.5f;
         }
-        if(other.tag == "Zone"){
+        if(other.tag == "zone"){
             rotationSpeed = other.GetComponent<Zone>().getValue();
-        }
         }
     }
 
-    void OnTriggerExit(Collider other){
-        if(other.tag == "Zone"){
+    void OnTriggerExit2D(Collider2D other){
+        if(other.tag == "zone"){
             rotationSpeed = rotationSpeed_initial;
         }
     }
+    
     // called when the cube hits the floor
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag.Equals("Enemy"))
             gameOverMng.ShowGameOverPanel();
     }
-
-    
-
 }
 

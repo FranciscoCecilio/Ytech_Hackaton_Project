@@ -8,10 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public Transform center;
     Vector3 axis = Vector3.forward;
 
-    public float radius = 2.0f;
+    public float radius = 1.0f;
     public float radiusSpeed = 0.5f;
     public float rotationSpeed = 2.0f; 
+    public float rotationSpeed_initial = 2.0f;
     public float movementSpeed = 0.1f;
+    public float pressed_timer_up = 0.2f;
+    public float pressed_timer_down = 0.2f;
     
     void Start() {
         transform.position = ((transform.position - center.position).normalized * radius + center.position);
@@ -21,33 +24,44 @@ public class PlayerMovement : MonoBehaviour
         Rotate();
         Vector3 upVector = new Vector3(0,1,0);
         if(Input.GetKey(KeyCode.W)){
-            transform.position = transform.position + upVector*movementSpeed;
-            center.transform.position = center.transform.position + upVector*movementSpeed;
+            pressed_timer_up += Time.deltaTime;
+            transform.position = transform.position + upVector*movementSpeed*pressed_timer_up*pressed_timer_up;
+            center.transform.position = center.transform.position + upVector*movementSpeed*pressed_timer_up*pressed_timer_up;
+        }
+        else
+        {
+            pressed_timer_up = 0.2f;
         }
         if(Input.GetKey(KeyCode.S)){
-            transform.position = transform.position - upVector*movementSpeed;
-            center.transform.position = center.transform.position - upVector*movementSpeed;
+            pressed_timer_down += Time.deltaTime;
+            transform.position = transform.position - upVector*movementSpeed*pressed_timer_down*pressed_timer_down;
+            center.transform.position = center.transform.position - upVector*movementSpeed*pressed_timer_down;
+        }
+        else
+        {
+            pressed_timer_down = 0.2f;
         }
 
     void Rotate(){
-        transform.RotateAround (center.position, axis, rotationSpeed * Time.deltaTime);
+        transform.RotateAround (center.position, axis, -rotationSpeed * Time.deltaTime);
         var desiredPosition = (transform.position - center.position).normalized * radius + center.position;
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
     }
 
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter2D(Collider other){
         if(other.tag == "Portal"){
-            radius = radius + 1;
+            radius = radius + 0.5;
         }
-        if(other.tag == "Slow_Zone"){
-            //GetComponent;
+        if(other.tag == "Zone"){
+            rotationSpeed = other.GetComponent<Zone>().getValue();
         }
-        if(other.tag == "Fast_Zone"){
-            rotationSpeed = rotationSpeed*2;
         }
-        if(other.tag == "Normal_Zone"){
-            rotationSpeed = rotationSpeed;
+    }
+
+    void OnTriggerExit2D(Collider other){
+        if(other.tag == "Zone"){
+            rotationSpeed = rotationSpeed_initial;
         }
     }
 }
-}
+

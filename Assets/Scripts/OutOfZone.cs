@@ -30,6 +30,7 @@ public class OutOfZone : MonoBehaviour
         else if(isOut){
             timer -= Time.deltaTime;
             warningText.gameObject.SetActive(true);
+            if(timer <= 0) timer = 0;
             warningText.text = string.Format("COME BACK!\n" + timer.ToString("F2"));
         }
         else{

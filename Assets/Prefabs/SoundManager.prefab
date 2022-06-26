@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Bag Raiders Shooting Stars Lyrics (mp3cut.net)
-    clip: {fileID: 8300000, guid: 0faf3c370a4d80e479f01665474b5c06, type: 3}
-    volume: 0.25
+    clip: {fileID: 8300000, guid: 3371c9c03bb53c8459a332d0e9f2398d, type: 3}
+    volume: 0.185
     pitch: 1
     loop: 1
     source: {fileID: 0}

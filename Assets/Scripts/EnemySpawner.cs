@@ -11,8 +11,9 @@ public class EnemySpawner : MonoBehaviour
     private float changeSpeedTimer = 0;
     public float offsetSpeed = 0.5f;
     public GameObject[] selectorArr;
+    public float enemyDifficulty = 1f; // represents the speed of enenimes
     public float height;
-
+    float width = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,21 +27,28 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         if (spawnTimer > maxTime) {
-            int numObjects = selectorArr.Length;
-            int selectedEnemy = Random.Range(0, numObjects );
-            GameObject newEnemy = Instantiate(selectorArr[selectedEnemy]);
-            newEnemy.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), -1);
-            Destroy(newEnemy, 15);
+            SpawnEnemy();
             spawnTimer = 0;
 
         }
         Debug.Log(maxTime);
-         if (changeSpeedTimer > changeTime && maxTime >= 2) {
-            maxTime -= offsetSpeed;
+        
+        if (changeSpeedTimer > changeTime ) {
+            if(maxTime >= 1f) maxTime -= offsetSpeed;
+            enemyDifficulty += 0.1f;
             changeSpeedTimer = 0;
-         }
+        }
 
         spawnTimer += Time.deltaTime;
         changeSpeedTimer += Time.deltaTime;
+    }
+
+    void SpawnEnemy(){
+        int numObjects = selectorArr.Length;
+        int selectedEnemy = Random.Range(0, numObjects );
+        GameObject newEnemy = Instantiate(selectorArr[selectedEnemy]);
+        newEnemy.transform.position = transform.position + new Vector3(Random.Range(0, width), Random.Range(-height, height), -1);
+        newEnemy.GetComponent<MoveEnemy>().IncreaseDifficulty(enemyDifficulty);
+        Destroy(newEnemy, 15);
     }
 }

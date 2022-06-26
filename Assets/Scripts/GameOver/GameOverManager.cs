@@ -11,7 +11,11 @@ public class GameOverManager : MonoBehaviour
     public TMP_Text currentScoreText;
     public TMP_Text highScoreText;
 
+    public bool isImortal = false;
+    public TMP_Text isImortaltext;
+
     public void ShowGameOverPanel(){
+        if(isImortal) return;
         
         Score.SetDuration(TimerScript.timeToDisplay);
         Score.GameOver();
@@ -26,5 +30,11 @@ public class GameOverManager : MonoBehaviour
     // reload the scene
     public void Restart(){
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void ImortalButton(){
+        isImortal = !isImortal;
+        if(isImortal) isImortaltext.text = "ImortalMode: ON"; 
+        else isImortaltext.text = "ImortalMode: OFF"; 
     }
 }

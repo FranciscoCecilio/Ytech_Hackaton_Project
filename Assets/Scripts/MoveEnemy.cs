@@ -8,10 +8,11 @@ public class MoveEnemy : MonoBehaviour
     public float cookieSpeed = 6;
     public float saberSpeed = 5;
     public float statueSpeed = 3;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    private float difficulty = 1.0f;
+
+    public void IncreaseDifficulty(float enemyDifficulty){
+        difficulty = enemyDifficulty;
     }
 
     // Update is called once per frame
@@ -19,17 +20,19 @@ public class MoveEnemy : MonoBehaviour
     {
         switch(tag) {
             case "Enemy-Cookie":
-                transform.position += Vector3.left * cookieSpeed * Time.deltaTime;
+                transform.position += Vector3.left * cookieSpeed * difficulty * Time.deltaTime;
                 break;
             case "Enemy-Saber":
-                transform.position += Vector3.left * saberSpeed * Time.deltaTime;
+                transform.position += Vector3.left * saberSpeed * difficulty * Time.deltaTime;
                 break;
             case "Enemy-Statue":
-                transform.position += Vector3.left * statueSpeed * Time.deltaTime;
+                transform.position += Vector3.left * statueSpeed * difficulty * Time.deltaTime;
                 break;
              default:
-                transform.position += Vector3.left * saberSpeed * Time.deltaTime;
+                transform.position += Vector3.left * saberSpeed * difficulty * Time.deltaTime;
                 break;
         }
     }
+
+
 }

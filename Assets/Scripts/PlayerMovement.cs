@@ -65,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
         if(other.tag == "out_of_zone"){
             script.Entered();
         }
+        if(other.tag.Equals("Enemy-Statue")||other.tag.Equals("Enemy-Saber")||other.tag.Equals("Enemy-Cookie")){
+            sM.PlayOneShot("explosion");
+            gameOverMng.ShowGameOverPanel();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other){
